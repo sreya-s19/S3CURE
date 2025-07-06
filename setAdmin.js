@@ -15,7 +15,7 @@ admin.initializeApp({
 
 // 2. PASTE THE USER'S UID HERE
 // Get this from the Firebase Emulator UI -> Authentication tab
-const uid = 'KN8SsuFKhe4aj9hMsrfoMexr64AM'; 
+const uid = 'some-hardcoded-uid-here'; 
 
 
 // 3. SET THE CUSTOM CLAIM
