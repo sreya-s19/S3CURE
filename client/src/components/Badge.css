@@ -1,0 +1,84 @@
+/* src/components/Badge.css */
+
+/* This container is for positioning the badge and its tooltip */
+.badge-container {
+  position: relative; /* Essential for positioning the tooltip relative to the badge */
+  width: 100px;       /* Control the width of the badge */
+  height: 100px;      /* Control the height of the badge */
+  cursor: pointer;    /* Show a pointer on hover */
+  transition: transform 0.3s ease;
+}
+
+/* The actual badge image from your /public/badges folder */
+.badge-image {
+  width: 100%;
+  height: 100%;
+  transition: filter 0.3s ease;
+}
+
+/* Make the badge grow and glow slightly on hover */
+.badge-container:hover {
+  transform: scale(1.1);
+}
+
+.badge-container:hover .badge-image {
+  /* Adds a subtle white glow effect on hover */
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.7));
+}
+
+
+/* --- TOOLTIP STYLING (using ::before and ::after pseudo-elements) --- */
+
+/* The tooltip title (badge name). Hidden by default. */
+.badge-container::before {
+  content: attr(data-title); /* Pulls text from the 'data-title' attribute */
+  position: absolute;
+  bottom: 110%; /* Position it directly above the badge */
+  left: 50%;
+  transform: translateX(-50%); /* Center the tooltip horizontally */
+  
+  background-color: var(--primary-glow-color, #00d9ff);
+  color: #000;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  white-space: nowrap; /* Prevent title from wrapping */
+  
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none; /* Prevents the tooltip from interfering with mouse events */
+  z-index: 10;
+}
+
+/* The tooltip description. Hidden by default. */
+.badge-container::after {
+  content: attr(data-description); /* Pulls text from the 'data-description' attribute */
+  position: absolute;
+  top: 110%; /* Position it directly below the badge */
+  left: 50%;
+  transform: translateX(-50%);
+  
+  background-color: #1a1a2e; /* A dark, cyberpunk blue/purple */
+  color: #e0e0e0;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid var(--primary-glow-color, #00d9ff);
+  font-size: 0.9rem;
+  width: 220px; /* Set a fixed width for the description box */
+  text-align: center;
+  
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* When you hover over the badge container, make BOTH tooltips visible */
+.badge-container:hover::before,
+.badge-container:hover::after {
+  opacity: 1;
+  visibility: visible;
+}

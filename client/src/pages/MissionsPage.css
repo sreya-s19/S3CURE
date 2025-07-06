@@ -1,0 +1,31 @@
+/* client/src/pages/MissionsPage.css */
+.missions-container {
+  padding: var(--spacing-xl);
+  max-width: 1200px;
+  margin: 0 auto; /* Center the container */
+  width: 100%;
+}
+
+.missions-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  text-shadow: 0 0 10px var(--secondary-color);
+}
+
+.missions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.missions-status {
+  text-align: center;
+  padding: var(--spacing-xl);
+  font-size: 1.5rem;
+  font-family: var(--font-heading);
+  grid-column: 1 / -1; /* Make status message span all columns */
+}
+.missions-status.error {
+  color: var(--error-color);
+}

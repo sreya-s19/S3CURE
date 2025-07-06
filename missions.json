@@ -1,0 +1,719 @@
+{
+  "missions": 
+    {
+    "mission01": {
+        "title": "The Rookie Ping",
+        "tool": "terminal",
+        "difficulty": "easy",
+        "description": "You're a new recruit. Time to learn the ropes. Let’s begin with basic recon tools.",
+        "skills": ["Ping", "Traceroute", "Basic Networking"],
+        "flag": "FLAG{ping_complete}",
+        "steps": [
+            {
+            "tool": "terminal",
+            "prompt": "Run a ping on the domain `cyberdiaries.in`. What is the IP address it resolves to?",
+            "answer": "192.168.10.5",
+            "successMessage": "IP resolved. That’s our internal training server.",
+            "filesystem": {
+                "ping_result.txt": {
+                "type": "text",
+                "content": "PING cyberdiaries.in (192.168.10.5): 56 data bytes\n64 bytes from 192.168.10.5: icmp_seq=0 ttl=64 time=1.2 ms"
+                }
+            }
+            },
+            {
+            "tool": "terminal",
+            "prompt": "Now use traceroute to follow the route to that IP. What is the name of the third hop?",
+            "answer": "edge-router-3",
+            "successMessage": "Traceroute complete. You’ve mapped the network path successfully.",
+            "filesystem": {
+                "traceroute.txt": {
+                "type": "text",
+                "content": "1  gateway.local (10.0.0.1)\n2  core-switch (172.16.0.1)\n3  edge-router-3 (192.168.1.254)\n4  cyberdiaries.in (192.168.10.5)"
+                }
+            }
+            }
+            ]
+        },
+        "mission02": {
+            "title": "Simple Password Leak",
+            "tool": "terminal",
+            "difficulty": "easy",
+            "description": "A leaked password database was found on a public pastebin. Can you identify the exposed password?",
+            "skills": ["Leaked Credentials", "File Search"],
+            "flag": "FLAG{password_found}",
+            "steps": [
+                {
+                "tool": "terminal",
+                "prompt": "Access the `leaked_users.txt` file. What is the password of the user `diana@cyberdiaries.in`?",
+                "answer": "diana1234",
+                "successMessage": "Password identified. Basic but effective!",
+                "filesystem": {
+                    "leaked_users.txt": {
+                    "type": "text",
+                    "content": "User: ankit@cyberdiaries.in | Pass: hacker321\nUser: diana@cyberdiaries.in | Pass: diana1234\nUser: arjun@cyberdiaries.in | Pass: p@55word"
+                    }
+                }
+                },
+                {
+                "tool": "terminal",
+                "prompt": "Try to use `diana1234` on the internal login simulation. What does the system respond?",
+                "answer": "Login successful - Admin Panel Access",
+                "successMessage": "System responds with elevated access. Nice job, rookie.",
+                "filesystem": {
+                    "login_sim.txt": {
+                    "type": "text",
+                    "content": "Attempting login for diana@cyberdiaries.in with password: diana1234\nResponse: Login successful - Admin Panel Access"
+                    }
+                }
+                }
+            ]
+        },
+        "mission03": {
+            "title": "Decode the Note",
+            "tool": "terminal",
+            "difficulty": "easy",
+            "description": "You found a suspicious note with encoded content. Can you crack the cipher?",
+            "skills": ["Base64", "Text Decoding"],
+            "flag": "FLAG{hello_cyber_agent}",
+            "steps": [
+                {
+                "tool": "terminal",
+                "prompt": "Open the file `note.txt`. Decode the Base64 message. What is the decoded text?",
+                "answer": "hello cyber agent",
+                "successMessage": "Correct decode! Your decoder ring works.",
+                "filesystem": {
+                    "note.txt": {
+                    "type": "text",
+                    "content": "aGVsbG8gY3liZXIgYWdlbnQ="
+                    }
+                }
+                },
+                {
+                "tool": "terminal",
+                "prompt": "Now convert the decoded text into a flag format: FLAG{...}. Enter the correct flag.",
+                "answer": "FLAG{hello_cyber_agent}",
+                "successMessage": "Mission complete! You’ve cracked your first cipher.",
+                "filesystem": {}
+                }
+            ]
+        },
+        "mission04": {
+            "title": "Quantum Mirage",
+            "tool": "terminal",
+            "difficulty": "hard",
+            "description": "An underground hacker named 'Nyx' is brokering an untraceable zero-day. Your job is to trace the digital money trail and expose their identity.",
+            "skills": ["Cryptocurrency Analysis", "Metadata Forensics", "Dark Web OSINT"],
+            "flag": "FLAG{nyx_exposed}",
+            "steps": [
+                {
+                "tool": "terminal",
+                "prompt": "An anonymous tip points to a user named 'Nyx' on the 'DarkNet Forum' who is brokering a zero-day exploit. Your first task is to find the cryptocurrency transaction ID mentioned in Nyx's public posts. Search the forum archives.",
+                "answer": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2",
+                "successMessage": "Transaction ID found. This is our first lead into their financial operations.",
+                "filesystem": {
+                    "forum_archive.txt": {
+                    "type": "text",
+                    "content": "--- DarkNet Forum Archives ---\nUser: xCrypt\nPost: Selling rare DB leaks.\n---\nUser: Nyx\nPost: New 0-day for sale. Un-patchable. Serious buyers only. Payment confirms access. TXID: a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2\n---\nUser: AgentM\nPost: Looking for network access."
+                    }
+                }
+                },
+                {
+                "tool": "terminal",
+                "prompt": "The transaction was sent to a known crypto mixer. Find the hidden wallet address in metadata.",
+                "answer": "XMR_4A5B6C7D8E9F",
+                "successMessage": "Stealth address identified! We’re getting closer.",
+                "filesystem": {
+                    "tx_metadata.log": {
+                    "type": "text",
+                    "content": "Transaction ID: a1b2c3d4e5f6...\nOutput 1 (Public): ...\n--BEGIN OBFUSCATED DATA--\nStealth Address: XMR_4A5B6C7D8E9F\n--END OBFUSCATED DATA--"
+                    }
+                }
+                },
+                {
+                "tool": "terminal",
+                "prompt": "The wallet was reused on a gaming site. Crosscheck leaked data. What’s the gaming username?",
+                "answer": "ShadowStalker99",
+                "successMessage": "MISSION COMPLETE. Nyx has been unmasked.",
+                "filesystem": {
+                    "leaked_db.txt": {
+                    "type": "text",
+                    "content": "--- Leaked Gaming Platform Data ---\nUser: GhostRecon\n---\nUser: ShadowStalker99\nWallet: XMR_4A5B6C7D8E9F\n---\nUser: Viper\n"
+                    }
+                }
+                }
+            ]
+        },
+        "mission05": {
+            "title": "Signal Snare",
+            "tool": "terminal",
+            "difficulty": "medium",
+            "description": "Intercepted signals from a rogue device near a defense facility are suspected to contain exfiltrated data. Analyze the captured transmissions to extract intelligence.",
+            "skills": ["Signal Analysis", "Base64 Decoding", "Traffic Inspection"],
+            "flag": "FLAG{signal_decrypted}",
+            "steps": [
+                {
+                "tool": "terminal",
+                "prompt": "The signal dump contains encoded transmissions. Begin by decoding the Base64-encoded string in the 'signal_dump.txt' file.",
+                "answer": "TOP_SECRET_DATA_STREAM",
+                "successMessage": "You've decoded the initial transmission.",
+                "filesystem": {
+                    "signal_dump.txt": {
+                    "type": "text",
+                    "content": "VE9QX1NFQ1JFVF9EQVRBX1NUUkVBTA=="
+                    }
+                }
+                },
+                {
+                "tool": "terminal",
+                "prompt": "Nice work. Now match the decoded string to a specific transmission frequency listed in the metadata. What’s the matching frequency?",
+                "answer": "403.5 MHz",
+                "successMessage": "Correct. The rogue device has been triangulated. Mission complete.",
+                "filesystem": {
+                    "metadata.log": {
+                    "type": "text",
+                    "content": "--- Signal Log ---\nChannel 1: 403.5 MHz - Data: TOP_SECRET_DATA_STREAM\nChannel 2: 392.1 MHz - Data: NOISE\nChannel 3: 401.3 MHz - Data: EMPTY"
+                    }
+                }
+                }
+            ]
+        },
+        "mission06": {
+            "title": "Phantom Footprints",
+            "type": "image",
+            "difficulty": "medium",
+            "description": "Analyze surveillance images to identify the suspect’s movements across a secure facility.",
+            "skills": ["Image Forensics", "Pattern Recognition", "OSINT"],
+            "flag": "FLAG{phantom_traced}",
+            "steps": [
+                {
+                "tool": "image",
+                "prompt": "Look at the security camera snapshot 'camera1.jpg'. Identify the unusual object the suspect is carrying.",
+                "answer": "encrypted_usb",
+                "successMessage": "Correct! The suspect carries an encrypted USB device.",
+                "filesystem": {
+                    "camera1.jpg": {
+                    "type": "image",
+                    "content": "base64_encoded_image_data_here"
+                    }
+                }
+                },
+                {
+                "tool": "image",
+                "prompt": "Check 'camera2.jpg' for the path the suspect took. Which exit gate did they use?",
+                "answer": "west_gate",
+                "successMessage": "Well done! The suspect exited through the west gate.",
+                "filesystem": {
+                    "camera2.jpg": {
+                    "type": "image",
+                    "content": "base64_encoded_image_data_here"
+                    }
+                }
+                }
+            ]
+        },
+        "mission07": {
+            "title": "Data Breach Traceback",
+            "tool": "terminal",
+            "difficulty": "easy",
+            "description": "A suspicious login was detected on a corporate server. Use the log files to trace back the source IP and find the intruder's handle.",
+            "skills": ["Log Analysis", "IP Tracing", "Basic Forensics"],
+            "flag": "FLAG{intruder_identified}",
+            "steps": [
+                {
+                "tool": "terminal",
+                "prompt": "Review the 'access.log' for failed login attempts. What is the IP address used in the last failed attempt?",
+                "answer": "192.168.1.42",
+                "successMessage": "IP address identified.",
+                "filesystem": {
+                    "access.log": {
+                    "type": "text",
+                    "content": "Failed login from 192.168.1.35\nFailed login from 192.168.1.42\nSuccessful login from 192.168.1.50"
+                    }
+                }
+                },
+                {
+                "tool": "terminal",
+                "prompt": "Cross-check the IP in the 'user_db.txt' to find the username associated with that IP.",
+                "answer": "shadow_hacker",
+                "successMessage": "User handle found. Mission complete.",
+                "filesystem": {
+                    "user_db.txt": {
+                    "type": "text",
+                    "content": "user: admin ip: 192.168.1.50\nuser: shadow_hacker ip: 192.168.1.42\nuser: guest ip: 192.168.1.35"
+                    }
+                }
+                }
+            ]
+        },
+        "mission08": {
+            "title": "Encrypted Email Hunt",
+            "tool": "terminal",
+            "difficulty": "easy",
+            "description": "An encrypted email contains a secret message. Use the clues to decrypt it and uncover the sender's identity.",
+            "skills": ["Email Forensics", "Basic Cryptography", "Pattern Matching"],
+            "flag": "FLAG{email_decrypted}",
+            "steps": [
+                {
+                "tool": "terminal",
+                "prompt": "The email content in 'email.enc' is Base64 encoded. Decode the message.",
+                "answer": "meet_at_midnight",
+                "successMessage": "Message decoded successfully.",
+                "filesystem": {
+                    "email.enc": {
+                    "type": "text",
+                    "content": "bWVldF9hdF9taWRuaWdodA=="
+                    }
+                }
+                },
+                {
+                "tool": "terminal",
+                "prompt": "Check 'email_headers.txt' for the sender’s email address.",
+                "answer": "shadow.agent@darknet.com",
+                "successMessage": "Sender identified. Mission complete.",
+                "filesystem": {
+                    "email_headers.txt": {
+                    "type": "text",
+                    "content": "From: shadow.agent@darknet.com\nTo: intel@agency.org\nSubject: Confidential"
+                    }
+                }
+                }
+            ]
+        },
+        "mission09": {
+            "title": "Network Packet Analysis",
+            "tool": "terminal",
+            "difficulty": "medium",
+            "description": "Analyze intercepted network packets to identify suspicious activity and extract the command-and-control server IP.",
+            "skills": ["Packet Analysis", "Network Forensics", "Protocol Decoding"],
+            "flag": "FLAG{c2_server_identified}",
+            "steps": [
+                {
+                "tool": "terminal",
+                "prompt": "Inspect 'packets.log' for unusual outbound connections. What is the IP address of the suspicious destination?",
+                "answer": "172.16.254.1",
+                "successMessage": "Suspicious IP found.",
+                "filesystem": {
+                    "packets.log": {
+                    "type": "text",
+                    "content": "Src: 10.0.0.5 Dst: 172.16.254.1 Protocol: TCP\nSrc: 10.0.0.5 Dst: 192.168.0.1 Protocol: HTTP\nSrc: 10.0.0.5 Dst: 8.8.8.8 Protocol: DNS"
+                    }
+                }
+                },
+                {
+                "tool": "terminal",
+                "prompt": "Check 'dns_cache.txt' to see if the IP resolves to any domain name.",
+                "answer": "malicious-c2.net",
+                "successMessage": "Domain matched. Mission complete.",
+                "filesystem": {
+                    "dns_cache.txt": {
+                    "type": "text",
+                    "content": "172.16.254.1 malicious-c2.net\n192.168.0.1 internal.local"
+                    }
+                }
+                }
+            ]
+        },
+        "mission10": {
+            "title": "Malware Signature Extraction",
+            "tool": "terminal",
+            "difficulty": "medium",
+            "description": "Extract and identify malware signatures from a suspicious binary file to determine its behavior.",
+            "skills": ["Binary Analysis", "Signature Extraction", "Reverse Engineering"],
+            "flag": "FLAG{malware_signature_found}",
+            "steps": [
+                {
+                "tool": "terminal",
+                "prompt": "Examine the 'malware.bin' file's hex dump for the signature pattern '4D5A'. What does this pattern represent?",
+                "answer": "pe_header",
+                "successMessage": "Correct, it's the PE header.",
+                "filesystem": {
+                    "malware.bin": {
+                    "type": "binary",
+                    "content": "hex_data_placeholder"
+                    }
+                }
+                },
+                {
+                "tool": "terminal",
+                "prompt": "Identify the malware's main payload hash from 'hashes.txt'.",
+                "answer": "d41d8cd98f00b204e9800998ecf8427e",
+                "successMessage": "Payload hash identified. Mission complete.",
+                "filesystem": {
+                    "hashes.txt": {
+                    "type": "text",
+                    "content": "d41d8cd98f00b204e9800998ecf8427e\nabc1234567890def1234567890abcdef"
+                    }
+                }
+                }
+            ]
+        },
+        "mission11": {
+            "title": "Social Media Scraper",
+            "tool": "terminal",
+            "difficulty": "easy",
+            "description": "Use open-source intelligence techniques to extract user details from social media posts.",
+            "skills": ["OSINT", "Data Extraction", "Pattern Recognition"],
+            "flag": "FLAG{social_media_mined}",
+            "steps": [
+                {
+                "tool": "terminal",
+                "prompt": "Review 'posts.txt' to find the username that frequently mentions 'classified'.",
+                "answer": "intel_miner",
+                "successMessage": "Username found.",
+                "filesystem": {
+                    "posts.txt": {
+                    "type": "text",
+                    "content": "user: intel_miner - \"Sharing classified info\"\nuser: casual_user - \"Nice day!\"\nuser: intel_miner - \"New classified leak uploaded\""
+                    }
+                }
+                },
+                {
+                "tool": "terminal",
+                "prompt": "Check 'profile_info.txt' for the email linked to 'intel_miner'.",
+                "answer": "intel.miner@darkweb.net",
+                "successMessage": "Email identified. Mission complete.",
+                "filesystem": {
+                    "profile_info.txt": {
+                    "type": "text",
+                    "content": "username: intel_miner\nemail: intel.miner@darkweb.net\nfollowers: 2300"
+                    }
+                }
+                }
+            ]
+        },
+        "mission12": {
+            "title": "Phishing Email Detection",
+            "tool": "terminal",
+            "difficulty": "medium",
+            "description": "Analyze an email to detect phishing attempts and extract the malicious URL.",
+            "skills": ["Email Analysis", "URL Inspection", "Cybersecurity Awareness"],
+            "flag": "FLAG{phishing_detected}",
+            "steps": [
+                {
+                "tool": "terminal",
+                "prompt": "Examine 'email.eml' and find the suspicious link embedded in the message.",
+                "answer": "http://fakebank-secure-login.com",
+                "successMessage": "Suspicious URL located.",
+                "filesystem": {
+                    "email.eml": {
+                    "type": "text",
+                    "content": "From: support@bank.com\nTo: victim@user.com\nSubject: Account Verification\nContent: Please verify your account at http://fakebank-secure-login.com immediately."
+                    }
+                }
+                },
+                {
+                "tool": "terminal",
+                "prompt": "Check 'url_info.txt' for the domain registration date to confirm if it's recent.",
+                "answer": "2025-06-15",
+                "successMessage": "Domain registration date confirms phishing attempt. Mission complete.",
+                "filesystem": {
+                    "url_info.txt": {
+                    "type": "text",
+                    "content": "http://fakebank-secure-login.com Registered: 2025-06-15 Owner: Unknown"
+                    }
+                }
+                }
+            ]
+        },
+        "mission13": {
+            "title": "Hidden Code in Image",
+            "type": "image",
+            "difficulty": "medium",
+            "description": "Analyze an image to find hidden steganographic data revealing secret communication.",
+            "skills": ["Steganography", "Image Analysis", "Data Extraction"],
+            "flag": "FLAG{hidden_message_found}",
+            "steps": [
+                {
+                "tool": "image",
+                "prompt": "Examine 'secret_image.png' for hidden metadata or altered pixels.",
+                "answer": "steg_secret",
+                "successMessage": "Hidden data detected in the image.",
+                "filesystem": {
+                    "secret_image.png": {
+                    "type": "image",
+                    "content": "base64_encoded_image_data_here"
+                    }
+                }
+                },
+                {
+                "tool": "terminal",
+                "prompt": "Extract and decode the hidden message from the image file.",
+                "answer": "meet_at_midnight_in_the_old_warehouse",
+                "successMessage": "Secret message extracted. Mission complete.",
+                "filesystem": {}
+                }
+            ]
+        },
+        "mission14": {
+            "title": "Suspicious USB Analysis",
+            "tool": "terminal",
+            "difficulty": "medium",
+            "description": "Analyze the contents of a suspicious USB drive to find hidden files and decode secret messages.",
+            "skills": ["File System Analysis", "Data Recovery", "Basic Cryptanalysis"],
+            "flag": "FLAG{usb_analysis_complete}",
+            "steps": [
+                {
+                "tool": "terminal",
+                "prompt": "List all files in the USB root directory using 'ls'. Identify the hidden '.secret' file.",
+                "answer": ".secret",
+                "successMessage": "Hidden file located.",
+                "filesystem": {
+                    "usb_root": {
+                    "type": "directory",
+                    "content": {
+                        "readme.txt": "This is a USB drive",
+                        ".secret": "encrypted_message.txt"
+                    }
+                    },
+                    "encrypted_message.txt": {
+                    "type": "text",
+                    "content": "U2FsdGVkX1+5JhsF1eR0E8G5fW==" 
+                    }
+                }
+                },
+                {
+                "tool": "terminal",
+                "prompt": "Decrypt the content of 'encrypted_message.txt' using the key 'S3CURE2025'. What is the decrypted message?",
+                "answer": "The meeting is at dawn",
+                "successMessage": "Decryption successful. Mission complete.",
+                "filesystem": {}
+                }
+            ]
+        },
+        "mission15": {
+            "title": "Wi-Fi Network Sniffing",
+            "tool": "terminal",
+            "difficulty": "medium",
+            "description": "Analyze captured Wi-Fi packets to identify the network SSID and the password used.",
+            "skills": ["Wi-Fi Security", "Packet Sniffing", "Encryption Analysis"],
+            "flag": "FLAG{wifi_access_granted}",
+            "steps": [
+                {
+                "tool": "terminal",
+                "prompt": "Open the 'wifi_capture.pcap' file and identify the SSID of the network being sniffed.",
+                "answer": "SecureHomeWiFi",
+                "successMessage": "SSID identified.",
+                "filesystem": {
+                    "wifi_capture.pcap": {
+                    "type": "binary",
+                    "content": "pcap_file_data_placeholder"
+                    }
+                }
+                },
+                {
+                "tool": "terminal",
+                "prompt": "Look for the WPA handshake packets and find the password used for the network.",
+                "answer": "Password123!",
+                "successMessage": "Password recovered. Mission complete.",
+                "filesystem": {}
+                }
+            ]
+        },
+        "mission16": {
+            "title": "Browser History Forensics",
+            "tool": "terminal",
+            "difficulty": "easy",
+            "description": "Analyze browser history data to uncover visited suspicious websites related to a cyber attack.",
+            "skills": ["Digital Forensics", "Data Parsing", "Pattern Recognition"],
+            "flag": "FLAG{history_revealed}",
+            "steps": [
+                {
+                "tool": "terminal",
+                "prompt": "Inspect 'browser_history.json' and identify the URL visited most frequently.",
+                "answer": "http://suspicious-site.com",
+                "successMessage": "Most visited URL found.",
+                "filesystem": {
+                    "browser_history.json": {
+                    "type": "text",
+                    "content": "[{\"url\":\"http://suspicious-site.com\",\"visits\":12},{\"url\":\"http://safe-site.com\",\"visits\":3}]"
+                    }
+                }
+                },
+                {
+                "tool": "terminal",
+                "prompt": "Extract the timestamp of the last visit to 'http://suspicious-site.com'.",
+                "answer": "2025-06-28T14:23:00Z",
+                "successMessage": "Timestamp extracted. Mission complete.",
+                "filesystem": {
+                    "browser_history_timestamps.txt": {
+                    "type": "text",
+                    "content": "http://suspicious-site.com 2025-06-28T14:23:00Z\nhttp://safe-site.com 2025-05-10T11:00:00Z"
+                    }
+                }
+                }
+            ]
+        },
+        "mission17": {
+            "title": "Encrypted Chat Logs",
+            "tool": "terminal",
+            "difficulty": "hard",
+            "description": "Decrypt chat logs to uncover hidden conversations between suspects.",
+            "skills": ["Encryption", "Cryptanalysis", "Data Forensics"],
+            "flag": "FLAG{chat_logs_decrypted}",
+            "steps": [
+                {
+                "tool": "terminal",
+                "prompt": "Analyze 'chat.enc' and identify the encryption algorithm used (hint: it's AES-128).",
+                "answer": "aes-128",
+                "successMessage": "Encryption algorithm identified.",
+                "filesystem": {
+                    "chat.enc": {
+                    "type": "binary",
+                    "content": "encrypted_chat_data_placeholder"
+                    }
+                }
+                },
+                {
+                "tool": "terminal",
+                "prompt": "Use the key 'S3CUREkey2025' to decrypt 'chat.enc'. Extract the secret phrase from the decrypted text.",
+                "answer": "meet_at_the_old_bridge",
+                "successMessage": "Chat logs decrypted successfully. Mission complete.",
+                "filesystem": {}
+                }
+            ]
+        },
+        "mission18": {
+            "title": "Log File Analysis",
+            "tool": "terminal",
+            "difficulty": "easy",
+            "description": "Analyze server log files to detect unauthorized access attempts.",
+            "skills": ["Log Analysis", "Pattern Recognition", "Incident Detection"],
+            "flag": "FLAG{unauthorized_access_detected}",
+            "steps": [
+                {
+                "tool": "terminal",
+                "prompt": "Check 'server.log' for IP addresses with more than 3 failed login attempts.",
+                "answer": "192.168.1.102",
+                "successMessage": "Suspicious IP identified.",
+                "filesystem": {
+                    "server.log": {
+                    "type": "text",
+                    "content": "Failed login from 192.168.1.101\nFailed login from 192.168.1.102\nFailed login from 192.168.1.102\nFailed login from 192.168.1.102\nSuccessful login from 192.168.1.103"
+                    }
+                }
+                },
+                {
+                "tool": "terminal",
+                "prompt": "Find the timestamp of the last failed login from 192.168.1.102.",
+                "answer": "2025-07-01T08:45:00Z",
+                "successMessage": "Timestamp noted. Mission complete.",
+                "filesystem": {
+                    "timestamps.log": {
+                    "type": "text",
+                    "content": "192.168.1.102 2025-07-01T08:30:00Z\n192.168.1.102 2025-07-01T08:45:00Z"
+                    }
+                }
+                }
+            ]
+        },
+        "mission19": {
+            "title": "Social Media Footprint",
+            "tool": "terminal",
+            "difficulty": "medium",
+            "description": "Analyze social media posts to track suspicious activities and uncover user aliases.",
+            "skills": ["Open Source Intelligence (OSINT)", "Text Analysis", "Social Media Forensics"],
+            "flag": "FLAG{alias_uncovered}",
+            "steps": [
+                {
+                "tool": "terminal",
+                "prompt": "Search 'social_posts.txt' for references to the username 'DarkPhoenix'. What is the date of the earliest post?",
+                "answer": "2025-05-20",
+                "successMessage": "Earliest post date found.",
+                "filesystem": {
+                    "social_posts.txt": {
+                    "type": "text",
+                    "content": "2025-05-20: User DarkPhoenix posted a cryptic message.\n2025-06-01: DarkPhoenix shared suspicious links."
+                    }
+                }
+                },
+                {
+                "tool": "terminal",
+                "prompt": "Find the real name associated with the username 'DarkPhoenix' in 'user_info.json'.",
+                "answer": "Alice Morgan",
+                "successMessage": "Real identity linked. Mission complete.",
+                "filesystem": {
+                    "user_info.json": {
+                    "type": "text",
+                    "content": "{\"DarkPhoenix\": {\"real_name\": \"Alice Morgan\", \"email\": \"alice@example.com\"}}"
+                    }
+                }
+                }
+            ]
+        },
+        "mission20": {
+            "title": "Ghost in the Server",
+            "description": "🚨 ALERT: We've detected suspicious activity on a key server. Someone broke through our defenses and may have left behind clues. Your mission is to analyze the server, trace the intruder, and uncover their exact location.",
+            "difficulty": "Elite",
+            "tags": ["Log Analysis", "EXIF Metadata", "Digital Forensics", "OSINT", "Server Intrusion"],
+            "objectives": [
+                "Inspect server logs to identify the intruder's IP address.",
+                "Analyze decrypted text files for hidden messages.",
+                "Examine image metadata to extract geolocation.",
+                "Trace the intruder's location and close the case."
+            ],
+            "steps": [
+                {
+                "tool": "terminal",
+                "prompt": "We've detected an unauthorized access on a key server. Your first task is to inspect the server logs and find the intruder's IP address. Use the 'ls' and 'cat' commands. Submit the IP as the flag.",
+                "answer": "172.217.14.228",
+                "filesystem": {
+                    "log.txt": {
+                    "type": "text",
+                    "content": "User 'xCrypt' accessed server at 2025-07-01 23:51:17\nIP Address: 172.217.14.228\nConnection terminated."
+                    }
+                },
+                "successMessage": "Correct. IP address confirmed. A hidden file has been decrypted on the server. Find it and examine its contents."
+                },
+                {
+                "tool": "terminal",
+                "prompt": "You've unlocked a new file. Find the file and submit its content as the flag. It may contain a clue for our next step.",
+                "answer": "The key is hidden where the sun don't shine... in the metadata.",
+                "filesystem": {
+                    "log.txt": {
+                    "type": "text",
+                    "content": "User 'xCrypt' accessed server at 2025-07-01 23:51:17\nIP Address: 172.217.14.228\nConnection terminated."
+                    },
+                    "notes.txt": {
+                    "type": "text",
+                    "content": "The key is hidden where the sun don't shine... in the metadata."
+                    }
+                },
+                "successMessage": "A cryptic message. This suggests we need to look deeper than just file contents. An image file was also found on the server; let's analyze it."
+                },
+                {
+                "type": "fileViewer",
+                "prompt": "The note mentioned metadata. We've located the suspicious image uploaded to the server. Analyze 'suspicious_image.jpg' and find the hidden coordinates in the EXIF data. Submit them as the flag.",
+                "answer": "45.4215N_75.6972W",
+                "filesystem": {
+                    "suspicious_image.jpg": {
+                    "type": "image",
+                    "url": "/suspicious_image.jpg",
+                    "exif": {
+                        "Model": "ILCE-7M3",
+                        "Timestamp": "2025-06-30T22:14:01",
+                        "Coordinates": "45.4215N_75.6972W",
+                        "Lens": "FE 24-70mm F2.8 GM"
+                    }
+                    }
+                },
+                "successMessage": "Coordinates acquired! Location pinpointed."
+                },
+                {
+                "tool": "terminal",
+                "prompt": "Excellent work, Investigator. You have successfully traced the intruder's steps and uncovered their location.",
+                "answer": "mission_complete",
+                "filesystem": {
+                    "report.txt": {
+                    "type": "text",
+                    "content": "Case file for 'The Ghost in the Server' is now closed."
+                    }
+                },
+                "successMessage": "MISSION COMPLETE. Closing case file."
+                }
+            ]
+        }
+
+
+    }
+}

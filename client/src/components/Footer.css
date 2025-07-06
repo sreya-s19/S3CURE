@@ -1,0 +1,11 @@
+/* client/src/components/Footer.css */
+.site-footer {
+  padding: var(--spacing-lg);
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-light);
+  opacity: 0.6;
+  margin-top: auto; /* Pushes footer to the bottom */
+  background-color: var(--background-dark);
+  border-top: 1px solid var(--border-color);
+}

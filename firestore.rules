@@ -1,18 +1,39 @@
-rules_version='2'
+rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
-      // This rule allows anyone with your database reference to view, edit,
-      // and delete all data in your database. It is useful for getting
-      // started, but it is configured to expire after 30 days because it
-      // leaves your app open to attackers. At that time, all client
-      // requests to your database will be denied.
-      //
-      // Make sure to write security rules for your app before that time, or
-      // else all client requests to your database will be denied until you
-      // update your rules.
-      allow read, write: if request.time < timestamp.date(2025, 7, 28);
+
+    // --- USER PROFILES (Using Custom Claims) ---
+    match /users/{userId} {
+      
+      // GET: A user can get their own document, or an admin can.
+      allow get: if request.auth.uid == userId || request.auth.token.admin == true;
+
+      // LIST: This is the critical fix.
+      // The rule now checks the token directly, which is instant.
+      allow list: if request.auth.token.admin == true;
+
+      // CREATE: A user can create their own profile.
+      allow create: if request.auth.uid == userId;
+
+      // UPDATE: A user can update their own profile.
+      allow update: if request.auth.uid == userId;
+      
+      // DELETE: Only admins can delete user documents.
+      allow delete: if request.auth.token.admin == true;
+    }
+
+    // --- MISSIONS & BADGES ---
+    match /missions/{missionId} {
+      allow read: if request.auth != null;
+      // Also update this rule to use the faster custom claim
+      allow write: if request.auth.token.admin == true;
+    }
+
+    match /badges/{badgeId} {
+      allow read: if request.auth != null;
+      // Also update this rule to use the faster custom claim
+      allow write: if request.auth.token.admin == true;
     }
   }
 }

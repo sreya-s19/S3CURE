@@ -1,0 +1,146 @@
+/* client/src/components/MissionCard.css */
+
+.mission-card {
+  /* --- Basic Styling --- */
+  background: var(--background-light);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  
+  /* --- NEW: Required for the flashlight effect --- */
+  position: relative; /* This is crucial for positioning the ::before pseudo-element */
+  overflow: hidden;   /* This keeps the light effect contained within the card's boundaries */
+}
+
+/* --- NEW: This pseudo-element IS the flashlight effect --- */
+.mission-card::before {
+  content: '';
+  position: absolute;
+  /* Use the CSS custom properties from our useMousePosition hook */
+  left: var(--mouse-x, 50%); /* Default to center if not available */
+  top: var(--mouse-y, 50%);
+  
+  /* Center the light beam on the cursor */
+  transform: translate(-50%, -50%);
+  
+  width: 250px; /* The size of the light beam */
+  height: 250px;
+  
+  /* The gradient creates the soft light effect */
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  
+  opacity: 0; /* The light is hidden by default */
+  transition: opacity 0.4s ease-out;
+  
+  pointer-events: none; /* Make sure the effect doesn't block mouse clicks on the card */
+}
+
+/* --- Show the flashlight effect on hover --- */
+.mission-card:hover::before {
+  opacity: 1;
+}
+
+.mission-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.2);
+  border-color: var(--primary-color);
+}
+
+.mission-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.mission-title {
+  font-size: 1.5rem;
+  margin: 0;
+  color: var(--primary-color); /* Added for better visibility */
+}
+
+.mission-difficulty {
+  font-family: var(--font-heading);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+/* Difficulty-specific colors */
+.difficulty-easy { background-color: rgba(13, 255, 0, 0.2); color: #0dff00; }
+.difficulty-medium { background-color: rgba(255, 215, 0, 0.2); color: #ffd700; }
+.difficulty-hard { background-color: rgba(255, 51, 0, 0.2); color: #ff3300; }
+.difficulty-elite { background-color: rgba(255, 0, 255, 0.2); color: #ff00ff; }
+
+.mission-briefing {
+  flex-grow: 1;
+  opacity: 0.8;
+  margin-bottom: var(--spacing-lg);
+  font-size: 0.95rem; /* Slightly larger for readability */
+}
+
+.mission-start-button {
+  display: block;
+  text-align: center;
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  transition: all 0.3s ease;
+  margin-top: auto; /* Ensures the button is always at the bottom */
+}
+
+.mission-start-button:hover {
+  background-color: var(--primary-color);
+  color: var(--text-dark);
+  box-shadow: var(--neon-glow-primary);
+}
+
+/* Add these styles to the end of MissionCard.css */
+
+.completed-badge {
+  position: absolute;
+  top: 10px;
+  right: -1px;
+  background-color: var(--success-color);
+  color: var(--text-dark);
+  padding: 4px 12px 4px 16px;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  box-shadow: -2px 2px 5px rgba(0,0,0,0.3);
+}
+
+.mission-replay-button {
+  /* Re-use start button styles but with different colors */
+  display: block;
+  text-align: center;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-light);
+  opacity: 0.7;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  transition: all 0.3s ease;
+  margin-top: auto;
+}
+
+.mission-replay-button:hover {
+  opacity: 1;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}

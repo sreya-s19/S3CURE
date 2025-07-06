@@ -67,3 +67,32 @@ node_modules/
 
 # dataconnect generated files
 .dataconnect
+
+# Firebase Emulator saved data
+/saved-data
+
+# Dependencies
+/node_modules
+/functions/node_modules
+/client/node_modules
+
+# Build output
+/build
+/dist
+/client/dist
+
+# Firebase
+*.log
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+.firebase/
+*serviceAccountKey.json*
+*service-account.json*
+
+# Saved emulator data
+/saved-data
+
+# System files
+.DS_Store
+Thumbs.db

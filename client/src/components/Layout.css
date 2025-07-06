@@ -1,0 +1,12 @@
+/* client/src/components/Layout.css */
+.site-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Make the wrapper at least the full height of the screen */
+}
+
+.main-content {
+  flex-grow: 1; /* This is the magic part! It makes the main content area expand to push the footer down. */
+  display: flex; /* Helps pages like HomePage fill the space correctly */
+  flex-direction: column;
+}

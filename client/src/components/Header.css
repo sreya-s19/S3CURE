@@ -1,0 +1,80 @@
+/* client/src/components/Header.css */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: rgba(18, 18, 35, 0.5); /* Semi-transparent */
+  border-bottom: 1px solid var(--border-color);
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  text-shadow: var(--neon-glow-primary);
+  transition: all 0.3s ease;
+}
+.logo:hover {
+  color: var(--secondary-color);
+  text-shadow: var(--neon-glow-secondary);
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.main-nav a {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.main-nav a:hover {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+/* Style for the currently active page link */
+.main-nav a.active {
+  color: var(--primary-color);
+  text-shadow: 0 0 5px var(--primary-color);
+}
+
+.nav-button {
+  border: 1px solid var(--secondary-color) !important;
+  padding: var(--spacing-sm) var(--spacing-md) !important;
+  border-radius: var(--border-radius);
+}
+.nav-button:hover {
+  background-color: var(--secondary-color);
+  color: var(--text-dark) !important;
+  border-bottom-color: transparent !important;
+}
+
+/* Add this to the end of Header.css */
+.nav-logout-button {
+  background-color: transparent;
+  border: 1px solid var(--error-color);
+  color: var(--error-color);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.nav-logout-button:hover {
+  background-color: var(--error-color);
+  color: var(--text-dark);
+}

@@ -1,0 +1,176 @@
+/* client/src/components/admin/MissionCreator.css */
+.mission-creator {
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+}
+
+.mission-creator h3 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  font-family: var(--font-heading);
+  opacity: 0.8;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: var(--spacing-sm);
+  background-color: var(--background-dark);
+  border: 1px solid var(--border-color);
+  color: var(--text-light);
+  font-size: 1rem;
+  border-radius: var(--border-radius);
+}
+
+.form-group textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.form-group-inline {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.form-group-inline .form-group {
+    flex: 1;
+}
+
+.submit-mission-btn {
+  width: 100%;
+  padding: var(--spacing-md);
+  background-color: var(--success-color);
+  color: var(--text-dark);
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.submit-mission-btn:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
+.submit-mission-btn:disabled {
+  background-color: var(--border-color);
+  cursor: not-allowed;
+}
+
+.form-error {
+  color: var(--error-color);
+  text-align: center;
+  margin-top: var(--spacing-md);
+}
+
+/* Add these styles to the end of MissionCreator.css */
+
+.form-divider {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: var(--spacing-lg) 0;
+}
+
+.mission-creator h4 {
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.step-form-group {
+  border: 1px dashed var(--border-color);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  border-radius: var(--border-radius);
+}
+
+.step-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.step-header h5 {
+  margin: 0;
+  color: var(--secondary-color);
+}
+
+.remove-step-btn {
+  background: transparent;
+  color: var(--error-color);
+  border: 1px solid var(--error-color);
+  padding: 4px 8px;
+  border-radius: var(--border-radius);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.remove-step-btn:hover:not(:disabled) {
+  background: var(--error-color);
+  color: var(--text-light);
+}
+
+.remove-step-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.add-step-btn {
+  width: 100%;
+  padding: var(--spacing-sm);
+  background: transparent;
+  border: 1px dashed var(--primary-color);
+  color: var(--primary-color);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: var(--spacing-lg);
+}
+
+.add-step-btn:hover {
+  background: rgba(0, 240, 255, 0.1);
+}
+
+/* Add these styles to the end of MissionCreator.css */
+.form-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.form-actions .submit-mission-btn {
+  margin-top: 0;
+  flex-grow: 1;
+}
+
+.cancel-btn {
+  flex-grow: 1;
+  padding: var(--spacing-md);
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-light);
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn:hover {
+  background-color: var(--background-dark);
+  border-color: var(--text-light);
+}

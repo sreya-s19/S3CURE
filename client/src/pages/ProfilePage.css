@@ -1,0 +1,122 @@
+/* src/pages/ProfilePage.css */
+
+.profile-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* --- User Info Header --- */
+.profile-header {
+  display: flex;
+  align-items: baseline; /* Aligns username and rank nicely */
+  gap: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--primary-glow-color, #00d9ff);
+  margin-bottom: 20px;
+}
+
+.profile-header h1 {
+  font-size: 3rem;
+  color: var(--secondary-glow-color, #00ff9d);
+  margin: 0;
+  text-shadow: 0 0 10px var(--secondary-glow-color, #00ff9d);
+}
+
+.profile-rank {
+  font-size: 1.5rem;
+  color: var(--accent-color, #ff00ff);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+}
+
+/* --- User Details Box --- */
+.profile-details {
+  background-color: rgba(17, 24, 39, 0.5); /* A dark, semi-transparent background */
+  border-left: 4px solid var(--primary-glow-color, #00d9ff);
+  padding: 15px 20px;
+  border-radius: 4px;
+  margin-bottom: 40px;
+}
+
+.profile-details p {
+  margin: 8px 0;
+  font-size: 1.1rem;
+}
+
+.profile-details p strong {
+  color: var(--primary-glow-color, #00d9ff);
+  margin-right: 10px;
+}
+
+/* --- Main Sections (Badges & Missions) --- */
+.profile-section {
+  width: 100%;
+  margin-bottom: 40px; /* Ensures space between the sections */
+}
+
+.profile-section h2 {
+  font-size: 1.8rem;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  color: var(--text-light);
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--primary-color-dim, #337d8f);
+  margin-bottom: 20px;
+}
+
+/* --- Grid for Badges --- */
+.badges-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px; /* Creates space between the badges */
+}
+
+/* --- List for Completed Missions --- */
+.completed-missions-list {
+  display: flex;
+  flex-direction: column; /* Stack missions vertically */
+  gap: 10px;
+}
+
+.completed-mission-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color, #444);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.completed-mission-item:hover {
+  background-color: rgba(17, 24, 39, 0.5);
+  border-color: var(--primary-color, #66fcf1);
+}
+
+.completed-mission-item .mission-title {
+  font-size: 1.1rem;
+}
+
+.completed-mission-item .mission-difficulty {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.9rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+}
+
+/* Difficulty colors */
+.mission-difficulty.easy { color: #5eff5e; }
+.mission-difficulty.med { color: #fffb5e; }
+.mission-difficulty.hard { color: #ff8c5e; }
+.mission-difficulty.elite { color: #ff5e5e; }
+
+/* Fade-in animation for the whole page */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

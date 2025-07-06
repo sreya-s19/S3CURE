@@ -1,19 +1,15 @@
-// S3CURE_New/client/src/main.js
+// client/src/main.jsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.js'; // This imports YOUR main S3CURE React App component
-import './index.css'; // This imports the global CSS file that came with Create React App
+import App from './App.jsx';
+import './index.css';
+import { AppProvider } from './context/AppContext.jsx';
 
-// Ensure your Firebase initialization file is in the 'src' folder
-// or adjust path if it's in a subfolder like 'src/config/firebase.js'
-import './firebase.js';
-
-// Get the root element where your React app will be rendered
-const rootElement = document.getElementById('root');
-
-// Create a React root and render your App component
-ReactDOM.createRoot(rootElement).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    {/* 2. Wrap the app so all components can access game data */}
+    <AppProvider>
+      <App />
+    </AppProvider>
   </React.StrictMode>
 );

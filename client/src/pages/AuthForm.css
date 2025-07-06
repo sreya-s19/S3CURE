@@ -1,0 +1,103 @@
+/* client/src/pages/AuthForm.css */
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-xl) var(--spacing-lg);
+  flex-grow: 1;
+}
+
+.auth-form {
+  background-color: var(--background-light);
+  padding: var(--spacing-lg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.auth-title {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  font-size: 1.8rem;
+}
+
+.input-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.input-group label {
+  display: block;
+  font-family: var(--font-heading);
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-light);
+  opacity: 0.8;
+  text-transform: uppercase;
+}
+
+.input-group input {
+  width: 100%;
+  padding: var(--spacing-md);
+  background-color: var(--background-dark);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  color: var(--text-light);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+}
+
+.auth-button {
+  width: 100%;
+  padding: var(--spacing-md);
+  margin-top: var(--spacing-md);
+  background-color: var(--primary-color);
+  color: var(--text-dark);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
+
+.auth-button:hover {
+  background-color: var(--secondary-color);
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.7);
+  transform: translateY(-2px);
+}
+
+.auth-switch {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+  font-size: 0.9rem;
+}
+
+.auth-error {
+  background-color: rgba(255, 51, 0, 0.2);
+  border: 1px solid var(--error-color);
+  color: var(--text-light);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

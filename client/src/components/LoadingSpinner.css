@@ -1,0 +1,36 @@
+/* client/src/components/LoadingSpinner.css */
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: var(--spacing-xl);
+  min-height: 200px; /* Ensures it's visible even in small containers */
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 4px solid var(--border-color);
+  border-top-color: var(--primary-color);
+  animation: spin 1s linear infinite;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+}
+
+.spinner-message {
+  margin-top: var(--spacing-lg);
+  font-family: var(--font-heading);
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

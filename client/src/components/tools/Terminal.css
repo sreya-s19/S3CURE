@@ -1,0 +1,65 @@
+/* client/src/components/tools/Terminal.css */
+
+.terminal-container {
+  background-color: #0d0d1a; /* Darker than the main background */
+  color: var(--text-light);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  padding: var(--spacing-sm);
+  cursor: text; /* Make the whole container feel like a text input */
+}
+
+.terminal-history {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: var(--spacing-sm);
+}
+
+.terminal-line {
+  display: flex;
+  align-items: center;
+}
+
+.terminal-prompt-user {
+  color: var(--primary-color);
+}
+
+.terminal-prompt-symbol {
+  color: var(--text-light);
+  margin-right: var(--spacing-sm);
+}
+
+.terminal-input-text {
+  color: var(--text-light);
+}
+
+.terminal-output {
+  white-space: pre-wrap; /* Respects newlines and spaces */
+  word-wrap: break-word; /* Prevents long strings from overflowing */
+  color: #c0c0c0; /* Slightly dimmer than input text */
+  margin: var(--spacing-sm) 0;
+}
+
+.terminal-form {
+  display: flex;
+  width: 100%;
+}
+
+.terminal-input {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-light);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+}
+
+.terminal-input:focus {
+  outline: none;
+}

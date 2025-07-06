@@ -1,0 +1,208 @@
+/* client/src/pages/MissionViewPage.css */
+
+.mission-view-container {
+  display: grid;
+  /* 
+    Defines 2 columns: 
+    - The first (briefing) takes up 1 fractional unit of space.
+    - The second (tool) takes up 3 fractional units (it's 3x wider).
+  */
+  grid-template-columns: 1fr 3fr;
+
+  /*
+    Defines 2 rows:
+    - The first row takes up all available vertical space.
+    - The second row is only as tall as its content (the answer form).
+  */
+  grid-template-rows: 1fr auto;
+  
+  /* This creates a visual map for our grid areas. */
+  grid-template-areas:
+    "briefing tool"
+    "answer   answer"; /* The 'answer' area spans both columns at the bottom. */
+  
+  /* 
+    Fills the viewport height, subtracting a generous amount for the header. 
+    You might need to adjust '80px' if your header is taller or shorter.
+  */
+  height: calc(100vh - 80px);
+  padding: var(--spacing-lg);
+  gap: var(--spacing-lg);
+}
+
+.mission-briefing-panel {
+  grid-area: briefing; /* Assigns this element to the "briefing" area of our grid map */
+  background-color: var(--background-light);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-lg);
+  overflow-y: auto; /* Adds a scrollbar if the briefing text is too long */
+}
+
+.mission-briefing-panel h2 {
+  margin-top: 0;
+  color: var(--primary-color);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: var(--spacing-md);
+}
+
+.mission-tool-panel {
+  grid-area: tool; /* Assigns this to the "tool" area */
+  background-color: var(--background-dark);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  overflow: hidden; /* Prevents tool content from spilling out */
+  display: flex; /* Helps to correctly contain the tool component */
+}
+
+/* Find these rules in MissionViewPage.css and replace them */
+
+.mission-answer-panel {
+  grid-area: answer;
+  background-color: var(--background-light);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  display: flex; /* Use Flexbox */
+  align-items: center;
+  gap: var(--spacing-lg); /* Add space between form and feedback */
+  min-height: 60px;
+}
+
+.mission-answer-panel form {
+  display: flex;
+  flex-grow: 1; /* CRITICAL: Make the form take up all available space */
+  gap: var(--spacing-md);
+}
+
+.feedback-message {
+  margin: 0;
+  font-family: var(--font-heading);
+  white-space: nowrap; /* Prevent the message from wrapping and pushing the form */
+}
+
+.answer-input {
+  flex-grow: 1; /* Makes the input field stretch to fill the form */
+  padding: var(--spacing-md);
+  background-color: var(--background-dark);
+  border: 1px solid var(--border-color);
+  color: var(--text-light);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+}
+
+.answer-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+}
+
+.submit-button {
+  background-color: var(--primary-color);
+  color: var(--text-dark);
+  padding: 0 var(--spacing-lg);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  border: 1px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-button:hover:not(:disabled) {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.submit-button:disabled {
+  background-color: var(--border-color);
+  border-color: var(--border-color);
+  color: var(--text-light);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Styles for the success/error feedback message */
+.feedback-message {
+  margin: 0;
+  font-family: var(--font-heading);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+}
+
+.feedback-message.success {
+  color: var(--success-color);
+}
+.feedback-message.error {
+  color: var(--error-color);
+}
+
+/* Styles for the loading/error state of the whole page */
+.mission-status {
+  text-align: center;
+  padding: var(--spacing-xl);
+  font-size: 1.5rem;
+  font-family: var(--font-heading);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mission-status.error {
+  color: var(--error-color);
+}
+
+/* Find this section at the bottom of MissionViewPage.css and replace it */
+
+.mission-complete-actions {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Center the buttons horizontally */
+  align-items: center;
+  gap: var(--spacing-lg); /* Add space between the elements */
+}
+
+.mission-complete-actions .feedback-message {
+  border: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  text-align: left;
+}
+
+.action-button {
+  /* This is the base style for both buttons */
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  font-size: 1rem; /* Added for consistency */
+  
+  /* Primary Button Style */
+  background-color: var(--primary-color);
+  color: var(--text-dark);
+  border: 1px solid var(--primary-color);
+}
+
+.action-button:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  transform: translateY(-2px);
+  color: var(--text-dark); /* Ensure text color stays dark on hover */
+}
+
+/* Secondary Button Style */
+.action-button.secondary {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+.action-button.secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--text-dark);
+}

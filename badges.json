@@ -1,0 +1,107 @@
+{
+  "rookie-ping-master": {
+    "name": "Ping Master",
+    "description": "Awarded for mastering the basic network reconnaissance tools.",
+    "level": "Rookie",
+    "imageUrl": "/badges/rookie.svg",
+    "type": "Networking"
+  },
+  "password-breacher-bronze": {
+    "name": "Password Breacher",
+    "description": "Awarded for successfully identifying leaked credentials.",
+    "level": "Bronze",
+    "imageUrl": "/badges/bronze.svg",
+    "type": "Forensics"
+  },
+  "cipher-cracker-silver": {
+    "name": "Cipher Cracker",
+    "description": "Awarded for cracking encoded messages.",
+    "level": "Silver",
+    "imageUrl": "/badges/silver.svg",
+    "type": "Cryptography"
+  },
+  "quantum-infiltrator-gold": {
+    "name": "Quantum Infiltrator",
+    "description": "Awarded for exposing the identity of the elusive hacker 'Nyx'.",
+    "level": "Gold",
+    "imageUrl": "/badges/gold.svg",
+    "type": "OSINT"
+  },
+  "server-spectre-diamond": {
+    "name": "Server Spectre",
+    "description": "Awarded for expertly tracing and neutralizing a server intruder (Ghost in the Server).",
+    "level": "Diamond",
+    "imageUrl": "/badges/diamond.svg",
+    "type": "Forensics"
+  },
+  "phish-spotter-bronze": {
+    "name": "Phish Spotter",
+    "description": "Awarded for successfully identifying and analyzing a phishing attempt.",
+    "level": "Bronze",
+    "imageUrl": "/badges/bronze.svg",
+    "type": "Social Engineering"
+  },
+  "network-sniffer-silver": {
+    "name": "Network Sniffer",
+    "description": "Awarded for proficient packet analysis and network intrusion detection.",
+    "level": "Silver",
+    "imageUrl": "/badges/silver.svg",
+    "type": "Network Security"
+  },
+  "malware-analyst-gold": {
+    "name": "Malware Analyst",
+    "description": "Awarded for extracting malware signatures and understanding binary threats.",
+    "level": "Gold",
+    "imageUrl": "/badges/gold.svg",
+    "type": "Malware Analysis"
+  },
+  "osint-master-gold": {
+    "name": "OSINT Master",
+    "description": "Awarded for advanced open-source intelligence gathering and alias uncovering.",
+    "level": "Gold",
+    "imageUrl": "/badges/gold.svg",
+    "type": "OSINT"
+  },
+  "image-forensics-bronze": {
+    "name": "Image Forensics Expert",
+    "description": "Awarded for analyzing surveillance images and recognizing patterns.",
+    "level": "Bronze",
+    "imageUrl": "/badges/bronze.svg",
+    "type": "Forensics"
+  },
+  "steganography-expert-silver": {
+    "name": "Steganography Expert",
+    "description": "Awarded for finding hidden data within images and other files.",
+    "level": "Silver",
+    "imageUrl": "/badges/silver.svg",
+    "type": "Cryptography"
+  },
+  "usb-forensics-bronze": {
+    "name": "USB Forensics Specialist",
+    "description": "Awarded for investigating suspicious USB drives and recovering hidden files.",
+    "level": "Bronze",
+    "imageUrl": "/badges/bronze.svg",
+    "type": "Forensics"
+  },
+  "digital-forensics-bronze": {
+    "name": "Digital Sleuth",
+    "description": "Awarded for uncovering clues from browser history and digital trails.",
+    "level": "Bronze",
+    "imageUrl": "/badges/bronze.svg",
+    "type": "Forensics"
+  },
+  "log-analyst-bronze": {
+    "name": "Log Analyst",
+    "description": "Awarded for proficiently analyzing server logs to detect anomalies.",
+    "level": "Bronze",
+    "imageUrl": "/badges/bronze.svg",
+    "type": "Log Analysis"
+  },
+  "unassigned-badge": {
+    "name": "Unassigned Badge",
+    "description": "A placeholder badge for missions not yet assigned a specific reward.",
+    "level": "None",
+    "imageUrl": "/badges/rookie.svg",
+    "type": "General"
+  }
+}
