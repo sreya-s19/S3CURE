@@ -1,7 +1,8 @@
 # S3CURE - Cybercrime Investigation Game Platform
 
  
-<!-- Note: You should replace this with a screenshot of your own running application! -->
+![Screenshot 2025-07-06 102832](https://github.com/user-attachments/assets/8cee2be3-ca41-401c-aa9a-4ac102ebe400)
+
 
 > "You are not a player. You are the investigator."
 
